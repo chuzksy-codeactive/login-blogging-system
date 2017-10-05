@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/ionicons.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <title>Document</title>
+</head>
+<header>
+    <nav>
+        <ul class="header-nav">
+            <li class="item-1"><a href="/">CodeIn ACTIVE</a></li>   
+            <% if(isAuthenticated){ %>
+                <li <% if(title==='Profile'){%> class='active'<%}else{ %> class=''<%}%>><a href="/users/profile/<%= userId %>">Profile</a></li>
+                <li <% if(title==='Add Post'){%> class='active'<%}else{ %> class=''<%}%>><a href="/blog/add_posts">Add Post</a></li>
+                <li <% if(title==='View Posts'){%> class='active'<%}else{ %> class=''<%}%>><a href="/blog/blog_posts">View Posts</a></li>
+                <li ><a href="/users/logout">Logout</a></li>                
+            <% } else { %>
+                <li <% if(title==='Login'){%> class='active'<%}else{ %> class=''<%}%>><a href="/users/login">Login</a></li>
+                <li <% if(title==='Register'){%> class='active'<%}else{ %> class=''<%}%>><a href="/users/signup">Register</a></li>
+            <% } %>
+        </ul>         
+    </nav>
+</header>
+
+<body>

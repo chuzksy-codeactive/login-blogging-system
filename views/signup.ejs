@@ -1,0 +1,51 @@
+<% include partial/header %>
+    <div id="form-wrap">
+        <div class="wrapper">
+            <h3>Registration page</h3>
+            <hr>
+            <div class="error">
+                <ul>
+                    <% if(errors){ %>
+                        <% errors.forEach(error => { %>
+                            <li>
+                                <%= error %>
+                            </li>
+                        <% }) %>
+                    <% } %>
+                </ul>
+            </div>
+            <form method="POST" action="/users/signup" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="firstname">Firstname</label>
+                    <input type="text" class="form-control" id="firstname" placeholder="Enter firstname" name="firstname" value="<%= user==''? '' : user.firstname %>">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Lastname</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Enter lastname" name="lastname" value="<%= user==''? '' : user.lastname %>">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username" value="<%= user==''? '' : user.username %>">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="<%= user==''? '' : user.email %>">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" value="<%= user==''? '' : user.password %>">
+                </div>
+                <div class="form-group">
+                    <label for="password2">Re-enter Password</label>
+                    <input type="password" class="form-control" id="password2" placeholder="Re-enter password" name="password2" value="<%= user==''? '' : user.password2 %>">
+                </div>
+                <div class="form-group">
+                    <label for="image">Select image for your profile</label>
+                    <input type="file" class="form-control-file" id="image" name="image" value="<%= user==''? '' : user.image_filename %>">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>        
+        </div>
+    </div>
+<% include partial/footer %>

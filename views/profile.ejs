@@ -1,0 +1,42 @@
+<% include partial/header %>
+    <div class="wrap">
+        <img src="/<%= image %>" alt="User Image" class="user_image">
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action flex-column align-items-start active" id="head">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">User Information</h5>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action flex-column align-items-start" id="list">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Fullname</h5>
+                </div>
+                <p class="mb-1"><%= user.fullname.toString().toUpperCase() %></p>
+            </a>
+            <a class="list-group-item list-group-item-action flex-column align-items-start" id="list">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Username</h5>
+                </div>
+                <p class="mb-1"><%= user.username.toString().toUpperCase() %></p>
+            </a>
+            <a class="list-group-item list-group-item-action flex-column align-items-start" id="list">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Password</h5>
+                </div>
+                <p class="mb-1"><%= user.password.toString().toUpperCase() %></p>
+            </a>
+            <a class="list-group-item list-group-item-action flex-column align-items-start" id="list">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Email address</h5>
+                </div>
+                <p class="mb-1"><%= user.email.toString().toUpperCase() %></p>
+            </a>
+            <a class="list-group-item list-group-item-action flex-column align-items-start" id="list">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">User ID</h5>
+                </div>
+                <p class="mb-1"><%= user._id.toString() %></p>
+            </a>
+        </div>
+    </div>
+    <% include partial/footer %>

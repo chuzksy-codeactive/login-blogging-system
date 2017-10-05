@@ -1,0 +1,74 @@
+<% include partial/header %>
+    <div class="blog">
+        <div class="blog_wrap">
+            <div class="author_post">
+                <div class="author_header">
+                    <div class="item-1 author_header">
+                        <img src="/<%= path.normalize(post.author.image_url) %>">
+                        <div>
+                            <p><%= post.author.fullname %></p>
+                            <p><%- post.title %></p>
+                        </div>
+                    </div>
+                    <div class="display_time">
+                        <i class="ion-clock pull-center"> </i>
+                        <small><%= moment(post.date, "YYYYMMDD").fromNow() %></small>
+                    </div>
+                </div>
+                <div class="author_image">              
+                    <img src="/<%= path.normalize(post.image_url) %>" alt="blog image" >
+                </div>
+                <div class="author_content">
+                    <p><%- post.body %></p>
+                </div>
+                <div class="author_footer">
+                    <div style="display: flex">
+                        <a href="/blog/category/<%= post.category %>" class="badge badge-success" title="view blogs on this category"><%= post.category %> </span></a>
+                    </div>
+                </div>
+            </div>
+            <% if(!post.comments.length < 1){ %>
+                <h4>Comments </h4>
+                <div class="comment_length"><%= post.comments.length %> Comments</div>
+                <% post.comments.forEach(comment => { %>
+                    <div class="author_comment">
+                        <img src="/<%= path.normalize(comment.post_user.image_url) %>" alt="post owner's image" class="author_comment_image">
+                        <div style="width:100%; border-bottom:1px solid #666">                                 
+                            <div class="author_comment_name">
+                                <div class="itme-1"><%= comment.post_user.fullname  %></div>
+                                <div style="padding-right:20px;color:white">
+                                    <i class="ion-clock pull-center"> </i>
+                                    <small><%= moment(comment.date, "YYYYMMDD").fromNow()%></small>
+                                </div>
+                            </div>
+                            <div><%= comment.body %></div>                                                                
+                        </div>
+                    </div>
+                <% }) %>
+            <% }else{ %>
+                <h4>No Comments </h4>
+            <% } %>
+                <h3>Add Comment</h3>
+                <hr>
+
+            <form method="POST" action="/blog/show/addcomment">
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type='hidden'class="form-control" name="post_id" value="<%= post._id %>"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="title" class="col-sm-2 col-form-label">Comment</label>
+                    <div class="col-sm-10">
+                        <textarea rows=6 class="form-control" name="comment" placeholder="Join the discussion"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10"><button type="submit" class="btn btn-primary ">Add Comment</button></div>
+                </div>
+            </form>
+        </div>
+    </div>
+<% include partial/footer %>

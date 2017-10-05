@@ -1,0 +1,42 @@
+<% include partial/header %>
+    <div class="blog">
+        <div class="blog_wrap">
+            <% if(authors_blog) { %>
+                <% authors_blog.forEach( author => { %>
+                    <div class="author_post">
+                        <div class="author_header">
+                            <div class="item-1 author_header">
+                                <img src="/<%= path.normalize(author.author.image_url) %>">
+                                <div>
+                                    <p><%= author.author.fullname %></p>
+                                    <p><a href="/blog/show/<%= author._id %>" class="author_title"><%- author.title %></a></p>
+                                </div>
+                            </div>
+                            <div class="display_time">
+                                <i class="ion-clock pull-center"> </i>
+                                <small><%= moment(author.date, "YYYYMMDD").fromNow() %></small>
+                            </div>
+                        </div>
+                        <div class="author_image">              
+                            <img src="/<%= path.normalize(author.image_url) %>" alt="blog image" >
+                        </div>
+                        <div class="author_content">
+                            <p><%- truncatedText(author.body, 300) %></p>
+                        </div>
+                        <div class="author_footer">
+                            <a href="#" class="badge badge-light read_more" title="read more on this post">read more</a>
+                            <div style="display: flex">
+                               <a href="/blog/category/<%= author.category %>" class="badge badge-success" title="view blogs on this category"><%= author.category %> </span></a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else{ %> 
+
+
+            <% } %>
+            
+
+        </div>
+    </div>
+<% include partial/footer %>
